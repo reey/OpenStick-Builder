@@ -27,6 +27,9 @@ apt install -qqy --no-install-recommends \
     qrtr-tools \
     rmtfs \
     sudo \
+    htop \
+    wget \
+    curl \
     systemd-timesyncd \
     tzdata \
     wireguard-tools \
