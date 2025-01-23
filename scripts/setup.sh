@@ -30,6 +30,8 @@ apt install -qqy --no-install-recommends \
     htop \
     wget \
     curl \
+    libusbgx2 \
+    libqmi-utils \
     systemd-timesyncd \
     tzdata \
     wireguard-tools \
