@@ -1,11 +1,11 @@
 [Unit]
 DefaultDependencies=no
 Before=qrtr-ns.service
+RequiresMountsFor=/lib/firmware /usr/sbin
 
 [Service]
 Type=oneshot
 ExecStart=/usr/sbin/msm-firmware-loader.sh
-RequiresMountsFor=/lib/firmware /usr/sbin
 
 [Install]
 WantedBy=multi-user.target
