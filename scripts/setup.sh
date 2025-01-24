@@ -31,6 +31,7 @@ apt install -qqy --no-install-recommends \
     wget \
     curl \
     libusbgx2 \
+    ca-certificates \
     libqmi-utils \
     systemd-timesyncd \
     tzdata \
