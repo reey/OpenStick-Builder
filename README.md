@@ -70,7 +70,7 @@ Edit [`scripts/setup.sh`](scripts/setup.sh) to add/remove packages. Note that th
 > Make sure to perform a backup of the original firmware using the command `edl rf orig_fw.bin`
 
 ### Prerequisites
-- [EDL](https://github.com/bkerler/ed)
+- [EDL](https://github.com/bkerler/edl)
 - Android fastboot tool
   ```
   sudo apt install fastboot
