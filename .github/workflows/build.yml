@@ -31,7 +31,7 @@ jobs:
         if: ${{ inputs.github_user }}
         run: |
           mkdir -p rootfs/home/user/.ssh/
-          curl https://github.com/${{ inputs.github_user }}.keys | tee -a rootfs/home/user/.ssh/authorized_keys
+          curl https://github.com/${{ inputs.github_user }}.keys | sudo tee -a rootfs/home/user/.ssh/authorized_keys
 
       - name: Build gadget-tool
         run: sudo sh -e scripts/build_gt.sh
