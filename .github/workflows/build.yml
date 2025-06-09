@@ -30,7 +30,7 @@ jobs:
       - name: Add ssh keys from GitHub
         if: ${{ inputs.github_user }}
         run: |
-          mkdir -p rootfs/home/user/.ssh/
+          sudo mkdir -p rootfs/home/user/.ssh/
           curl https://github.com/${{ inputs.github_user }}.keys | sudo tee -a rootfs/home/user/.ssh/authorized_keys
 
       - name: Build gadget-tool
