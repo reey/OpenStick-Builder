@@ -31,6 +31,7 @@ PKG_CONFIG_PATH=${CHROOT}/usr/lib/pkgconfig:${CHROOT}/usr/lib/aarch64-linux-gnu/
         -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ \
         -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc \
         -DCMAKE_C_FLAGS=-I$(pwd)/dist/usr/include \
+        -DCMAKE_C_FLAGS=-L$(pwd)/dist/usr/lib \
         -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
         -DCMAKE_SYSROOT=${CHROOT} \
         -DCMAKE_SYSTEM_PROCESSOR=aarch64 \
