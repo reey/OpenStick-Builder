@@ -55,14 +55,14 @@ find /var/log -type f -delete
 passwd -dl root
 
 # Add user
-adduser --disabled-password --comment "" user
+adduser --disabled-password --comment "" ${USER_NAME}
 # Set password
-passwd user << EOD
+passwd ${USER_NAME} << EOD
 1
 1
 EOD
 # Add user to sudo group
-usermod -aG sudo user
+usermod -aG sudo ${USER_NAME}
 
 cat <<EOF >> /etc/systemd/journald.conf
 SystemMaxUse=300M

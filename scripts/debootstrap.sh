@@ -3,6 +3,7 @@
 CHROOT=${CHROOT=$(pwd)/rootfs}
 RELEASE=${RELEASE=stable}
 HOST_NAME=${HOST_NAME=openstick}
+USER_NAME=${USER_NAME=user}
 
 rm -rf ${CHROOT}
 
@@ -71,9 +72,10 @@ cp configs/extlinux.conf ${CHROOT}/boot/extlinux
 # copy custom dtb's
 cp dtbs/* ${CHROOT}/boot/dtbs/qcom/
 
-mkdir -p ${CHROOT}/home/user/.ssh/
-cp configs/authorized_keys ${CHROOT}/home/user/.ssh/authorized_keys
-chmod 0600 ${CHROOT}/home/user/.ssh/authorized_keys
+mkdir -p ${CHROOT}/home/${USER_NAME}/.ssh/
+cp configs/authorized_keys ${CHROOT}/home/${USER_NAME}/.ssh/authorized_keys
+chmod 0600 ${CHROOT}/home/${USER_NAME}/.ssh/authorized_keys
+chown -R ${USER_NAME}:${USER_NAME} ${CHROOT}/home/${USER_NAME}/.ssh/
 
 # create missing directory
 mkdir -p ${CHROOT}/lib/firmware/msm-firmware-loader

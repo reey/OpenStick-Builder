@@ -27,7 +27,6 @@ jobs:
       - name: Add ssh keys from GitHub
         if: ${{ inputs.github_user }}
         run: |
-          sudo mkdir -p rootfs/home/user/.ssh/
           curl https://github.com/${{ inputs.github_user }}.keys > configs/authorized_keys
 
       - name: Create rootfs
