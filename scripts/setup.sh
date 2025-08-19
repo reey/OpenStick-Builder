@@ -16,7 +16,7 @@ apt install -qqy --no-install-recommends \
     bridge-utils \
     dnsmasq \
     iptables \
-    libconfig9 \
+    libconfig11 \
     locales \
     modemmanager \
     netcat-traditional \
@@ -28,7 +28,7 @@ apt install -qqy --no-install-recommends \
     htop \
     wget \
     curl \
-    libusbgx2 \
+    libusbgx3 \
     ca-certificates \
     libqmi-utils \
     systemd-timesyncd \
