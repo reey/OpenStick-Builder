@@ -41,7 +41,8 @@ apt install -qqy --no-install-recommends \
     zram-tools \
     bc \
     ifupdown2 \
-    mobile-broadband-provider-info
+    mobile-broadband-provider-info \
+    jq
 
 # Cleanup
 apt clean
@@ -63,29 +64,12 @@ EOD
 # Add user to sudo group
 usermod -aG sudo user
 
-cat <<EOF >>/etc/bash.bashrc
-
-alias ls='ls --color=auto -lh'
-alias ll='ls --color=auto -lhA'
-alias l='ls --color=auto -l'
-alias cl='clear'
-alias ip='ip --color'
-alias bridge='bridge -color'
-alias free='free -h'
-alias df='df -h'
-alias du='du -hs'
-
-EOF
-
 cat <<EOF >> /etc/systemd/journald.conf
 SystemMaxUse=300M
 SystemKeepFree=1G
 EOF
 
-# install dnsproxy
-bash /install_dnsproxy.sh
-
-systemctl mask systemd-networkd-wait-online.service
+# systemctl mask systemd-networkd-wait-online.service
 
 # Prevent the accidental shutdown by power button
 sed -i 's/^#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf

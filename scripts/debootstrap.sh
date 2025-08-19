@@ -26,7 +26,6 @@ mount -o bind /dev/pts/ ${CHROOT}/dev/pts/
 mount -o bind /run ${CHROOT}/run/
 
 # chroot setup
-cp configs/install_dnsproxy.sh ${CHROOT}
 cp scripts/setup.sh ${CHROOT}
 chroot ${CHROOT} qemu-aarch64-static /bin/sh -c /setup.sh
 
@@ -35,26 +34,11 @@ for a in proc sys dev/pts dev run; do
     umount ${CHROOT}/${a}
 done;
 
-rm ${CHROOT}/install_dnsproxy.sh
 rm -f ${CHROOT}/setup.sh
 echo -n > ${CHROOT}/root/.bash_history
 
 echo ${HOST_NAME} > ${CHROOT}/etc/hostname
 sed -i "/localhost/ s/$/ ${HOST_NAME}/" ${CHROOT}/etc/hosts
-
-# setup dnsmasq
-cp -a configs/dhcp.conf ${CHROOT}/etc/dnsmasq.d/dhcp.conf
-
-cat <<EOF > ${CHROOT}/etc/resolv.conf
-search lan
-nameserver 127.0.0.1
-options edns0 trust-ad
-EOF
-
-cat <<EOF >> ${CHROOT}/etc/hosts
-
-192.168.100.1	${HOST_NAME}
-EOF
 
 # add rc-local
 cp -a configs/rc.local ${CHROOT}/etc/rc.local
@@ -95,7 +79,3 @@ echo "PARTUUID=80780b1d-0fe1-27d3-23e4-9244e62f8c46\t/boot\text2\tdefaults\t0 2"
 
 # backup rootfs
 tar cpzf rootfs.tgz --exclude="usr/bin/qemu-aarch64-static" -C rootfs .
-
-cat <<EOF > ${CHROOT}/etc/resolv.conf
-nameserver 1.1.1.1
-EOF
