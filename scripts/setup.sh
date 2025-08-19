@@ -2,6 +2,7 @@
 
 DEBIAN_FRONTEND=noninteractive
 DEBCONF_NONINTERACTIVE_SEEN=true
+USER_NAME=${USER_NAME=user}
 
 echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections
 echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections
