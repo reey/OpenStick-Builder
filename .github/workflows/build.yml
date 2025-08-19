@@ -24,14 +24,14 @@ jobs:
       - name: Extract MSM8916 firmware
         run: sudo sh -e scripts/extract_fw.sh
 
-      - name: Create rootfs
-        run: sudo sh -e scripts/debootstrap.sh
-
       - name: Add ssh keys from GitHub
         if: ${{ inputs.github_user }}
         run: |
           sudo mkdir -p rootfs/home/user/.ssh/
-          curl https://github.com/${{ inputs.github_user }}.keys | sudo tee -a rootfs/home/user/.ssh/authorized_keys
+          curl https://github.com/${{ inputs.github_user }}.keys > configs/authorized_keys
+
+      - name: Create rootfs
+        run: sudo sh -e scripts/debootstrap.sh
 
       - name: Build gadget-tool
         run: sudo sh -e scripts/build_gt.sh

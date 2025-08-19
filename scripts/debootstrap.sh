@@ -71,6 +71,10 @@ cp configs/extlinux.conf ${CHROOT}/boot/extlinux
 # copy custom dtb's
 cp dtbs/* ${CHROOT}/boot/dtbs/qcom/
 
+mkdir -p ${CHROOT}/home/user/.ssh/
+cp configs/authorized_keys ${CHROOT}/home/user/.ssh/authorized_keys
+chmod 0600 ${CHROOT}/home/user/.ssh/authorized_keys
+
 # create missing directory
 mkdir -p ${CHROOT}/lib/firmware/msm-firmware-loader
 
