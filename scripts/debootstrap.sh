@@ -41,6 +41,9 @@ echo -n > ${CHROOT}/root/.bash_history
 echo ${HOST_NAME} > ${CHROOT}/etc/hostname
 sed -i "/localhost/ s/$/ ${HOST_NAME}/" ${CHROOT}/etc/hosts
 
+# setup dnsmasq
+cp -a configs/dhcp.conf ${CHROOT}/etc/dnsmasq.d/dhcp.conf
+
 # add rc-local
 cp -a configs/rc.local ${CHROOT}/etc/rc.local
 chmod +x ${CHROOT}/etc/rc.local
