@@ -83,6 +83,6 @@ sed -i 's/^#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/forward.conf
 echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.d/forward.conf
 
-cat <<EOF > ${CHROOT}/etc/resolv.conf
+cat <<EOF > /etc/resolv.conf
 nameserver 1.1.1.1
 EOF
