@@ -43,7 +43,10 @@ apt install -qqy --no-install-recommends \
     bc \
     ifupdown2 \
     mobile-broadband-provider-info \
-    jq
+    jq \
+    net-tools \
+    systemd-resolved
+
 
 # Cleanup
 apt clean
@@ -70,7 +73,7 @@ SystemMaxUse=300M
 SystemKeepFree=1G
 EOF
 
-# systemctl mask systemd-networkd-wait-online.service
+systemctl mask systemd-networkd-wait-online.service
 
 # Prevent the accidental shutdown by power button
 sed -i 's/^#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf
