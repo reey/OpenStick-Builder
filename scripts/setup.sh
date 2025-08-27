@@ -45,7 +45,8 @@ apt install -qqy --no-install-recommends \
     mobile-broadband-provider-info \
     jq \
     net-tools \
-    systemd-resolved
+    systemd-resolved \
+    libconfig-dev # required for building gadget-tools
 
 
 # Cleanup
