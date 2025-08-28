@@ -10,16 +10,6 @@ autoreconf -i
 )
 
 mkdir -p build
-(
-cd build
-PKG_CONFIG_PATH=${CHROOT}/usr/lib/aarch64-linux-gnu/pkgconfig \
-    ${SRCDIR}/libusbgx/configure \
-        --host aarch64-linux-gnu \
-        --prefix=/usr \
-        --with-sysroot=${CHROOT}
-)
-make -C build DESTDIR=$(pwd)/dist CFLAGS="--sysroot=${CHROOT}" install
-make -C build CFLAGS="--sysroot=${CHROOT}" install
 
 rm -rf build/*
 PKG_CONFIG_PATH=${CHROOT}/usr/lib/pkgconfig:${CHROOT}/usr/lib/aarch64-linux-gnu/pkgconfig \
