@@ -79,4 +79,6 @@ systemctl mask systemd-networkd-wait-online.service
 sed -i 's/^#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf
 
 # Enable IPv4 and IPv6 forwarding by uncommenting the relevant lines in /etc/sysctl.conf
-sed -i -e 's/^#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' -e 's/^#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/' /etc/sysctl.conf
+# sed -i -e 's/^#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' -e 's/^#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/' /etc/sysctl.conf
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/forward.conf
+echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.d/forward.conf
